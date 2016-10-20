@@ -48,15 +48,20 @@ This project shows how to use the Web Push Notifications API in a website, allow
 
 ## Troubleshooting
 
-### Unable to subscribe to push
+* You may get the following error message (if it's your case simply update the `gcm_sender_id` in your manifest.json file):
 
+		Messaging: Please change your web app manifest's 'gcm_sender_id' value to 'XXXXXXXX' to use Firebase messaging. (messaging/incorrect-gcm-sender-id).
+
+### Not receiving push notifications		
 * Check that you have entered the right Firebase configurations, namely your Firebase Sender ID in the `gcm_sender_id` of your manifest.json file;
 
-* Don't forget to give permissions for the notifications when your browser requests them;
+* Don't forget to give permissions for the push notifications when your browser requests them;
 
-* Make sure your webserver is properly configured to serve the file manifest.json (check if there are no errors in Chrome Developers Tool network tab). IIS users may need to add the MIME type; 
+* Make sure your webserver is properly configured to serve the file manifest.json (check if there are no 404 errors in your browsers Developers Tool network tab). IIS users may need to add the MIME type; 
 
-* If you're not using localhost make sure you are using the https protocol with a valid SSL certificate for the domain you are using;  
+* If you're not using localhost make sure you are using the https protocol with a valid SSL certificate for the domain you are using;
+
+* Check if you have any other browser tab opened using the website you're testing. If you do, make sure that page has a Realtime connection established and is subscribing the push notification channel. Push notifications won't be displayed to users that are currently browsing the site that originated the push.  
 
 ## Private channel vs Global channel
 If you want to control to which users you are sending each push you should use a private channel for each user. If you want to broadcast a push notification to all users you should use a global channel that every user subscribes.
