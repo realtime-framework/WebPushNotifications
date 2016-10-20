@@ -7,14 +7,6 @@ This project shows how to use the Web Push Notifications API in a website, allow
 
 - Create a Firebase Cloud Messaging project. [Follow this tutorial](http://messaging-public.realtime.co/documentation/starting-guide/mobilePushGCM.html).
 
-- Update the Web App Manifest file (`manifest.json`) and enter your Firebase Sender ID obtained from the previous step:
-
-		{
-		  "name": "Realtime Web Push Demo",
-		  "short_name": "Web Push Demo",
-		  "gcm_sender_id": "<YOUR_FIREBASE_SENDER_ID>"		  
-		}
-
 - Open the `index.html` file and replace the Firebase initialization code shown below with the configuration code you got in the previous step:
 
 		  <!-- START INITIALIZATION CODE -->
@@ -48,9 +40,9 @@ This project shows how to use the Web Push Notifications API in a website, allow
 
 ## Troubleshooting
 
-* You may get the following error message (if it's your case simply update the `gcm_sender_id` in your manifest.json file):
+* If you get the following error message it means you have changed the `gcm_sender_id` in your manifest.json file. Please update your manifest and enter the exact value shown in the message:  
 
-		Messaging: Please change your web app manifest's 'gcm_sender_id' value to 'XXXXXXXX' to use Firebase messaging. (messaging/incorrect-gcm-sender-id).
+		Messaging: Please change your web app manifest's 'gcm_sender_id' value to '103953800507' to use Firebase messaging. (messaging/incorrect-gcm-sender-id).
 
 ### Not receiving push notifications		
 * Check that you have entered the right Firebase configurations, namely your Firebase Sender ID in the `gcm_sender_id` of your manifest.json file;
