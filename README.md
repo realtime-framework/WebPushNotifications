@@ -45,7 +45,7 @@ This project shows how to use the Web Push Notifications API in a website, allow
 		Messaging: Please change your web app manifest's 'gcm_sender_id' value to '103953800507' to use Firebase messaging. (messaging/incorrect-gcm-sender-id).
 
 ### Not receiving push notifications		
-* Check that you have entered the right Firebase configurations, namely your Firebase Sender ID in the `gcm_sender_id` of your manifest.json file;
+* Check that you have entered the right Firebase configurations;
 
 * Don't forget to give permissions for the push notifications when your browser requests them;
 
