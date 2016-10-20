@@ -64,4 +64,4 @@ If you want to control to which users you are sending each push you should use a
 A mixed private/global channel strategy can also be used, it really depends on your use case.
 
 ## On-line example
-You can test the Realtime Web Push Notifications [here](https://storage-cdn.realtime.co/web-push/index.html).
+You can test the Realtime Web Push Notifications [here](https://framework.realtime.co/demo/web-push).
