@@ -18,7 +18,13 @@
 
     webPushManager.start(function(error, registrationId){
       if (error) {
-        alert(error.message);
+        
+        if(error.message) {
+          alert(error.message);
+        } else {
+          alert("Ooops! It seems this browser doesn't support Web Push Notifications :(");
+        }
+        
         $("#curl").html("Oops! Something went wrong. It seems your browser does not support Web Push Notifications.<br><br>Error:<br>" + error.message);
         $("#sendButton").text("No can do ... this browser doesn't support web push notifications");
         $("#sendButton").css("background-color","red");
