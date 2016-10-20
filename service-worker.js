@@ -87,7 +87,15 @@ var parseRealtimeMessage = function (message) {
 
 // Shows a notification
 function showNotification(message) { 
+  // In this example we are assuming the message is a simple string
+  // containing the notification text. The target link of the notification
+  // click is fixed, but in your use case you could send a JSON message with 
+  // a link property and use it in the click_url of the notification
+
+  // The notification title
   const notificationTitle = 'Web Push Notification';
+
+  // The notification properties
   const notificationOptions = {
     body: message,
     icon: 'img/realtime-logo.jpg',
