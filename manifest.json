@@ -1,0 +1,5 @@
+{
+  "name": "Realtime Web Push Demo",
+  "short_name": "Web Push Demo",
+  "gcm_sender_id": "103953800507"
+}
