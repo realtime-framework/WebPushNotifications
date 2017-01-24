@@ -29,43 +29,34 @@
         $("#sendButton").text("No can do ... this browser doesn't support web push notifications");
         $("#sendButton").css("background-color","red");
       };
+     
+      // Create Realtime Messaging client
+      client = RealtimeMessaging.createClient();
+      client.setClusterUrl('https://ortc-developers.realtime.co/server/ssl/2.1/');
+    
+      client.onConnected = function (theClient) {
+        // client is connected
 
-      // connect to Realtime server
-      loadOrtcFactory(IbtRealTimeSJType, function (factory, error) {
-        if (error != null) {
-          alert("Factory error: " + error.message);
-        } else {
-           if (factory != null) {
-              // Create Realtime Messaging client
-              client = factory.createClient();
-              client.setClusterUrl('https://ortc-developers.realtime.co/server/ssl/2.1/');
-           
-              client.onConnected = function (theClient) {
-                // client is connected
+        // subscribe users to their private channels
+        theClient.subscribeWithNotifications(channel, true, registrationId,
+            function (theClient, channel, msg) {
+              // while you are browsing this page you'll be connected to Realtime
+              // and receive messages directly in this callback
+              console.log("Received a message from the Realtime server:", msg);
 
-                // subscribe users to their private channels
-                theClient.subscribeWithNotifications(channel, true, registrationId,
-                   function (theClient, channel, msg) {
-                     // while you are browsing this page you'll be connected to Realtime
-                     // and receive messages directly in this callback
-                     console.log("Received a message from the Realtime server:", msg);
-
-                     // Since the service worker will only show a notification if the user
-                     // is not browsing your website you can force a push notification to be displayed.
-                     // For most use cases it would be better to change the website UI by showing a badge
-                     // or any other form of showing the user something changed instead
-                     // of showing a pop-up notification.
-                     // Also consider thar if the user has severals tabs opened it will see a notification for
-                     // each one ...
-                     webPushManager.forceNotification(msg);
-                   });
-              };
-           
-              // Perform the connection
-              client.connect(RealtimeAppKey, 'JustAnyRandomToken');
-           }
-         }
-      });
+              // Since the service worker will only show a notification if the user
+              // is not browsing your website you can force a push notification to be displayed.
+              // For most use cases it would be better to change the website UI by showing a badge
+              // or any other form of showing the user something changed instead
+              // of showing a pop-up notification.
+              // Also consider thar if the user has severals tabs opened it will see a notification for
+              // each one ...
+              webPushManager.forceNotification(msg);
+            });
+      };
+    
+      // Establish the connection
+      client.connect(RealtimeAppKey, 'JustAnyRandomToken');  
     });    
 });
 
