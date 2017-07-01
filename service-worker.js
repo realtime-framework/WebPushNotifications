@@ -102,7 +102,7 @@ function showNotification(message) {
     data: {
       click_url: '/index.html'          
     },
-    tag: 'demo'
+    tag: Date.now()
   };
 
   return self.registration.showNotification(notificationTitle,
